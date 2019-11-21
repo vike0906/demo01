@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import './assets/style/theme/index.css'
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css'
-import './assets/style/theme/index.css'
+import './assets/style/init.css'
+
 
 import store from './store/'
 

@@ -2,15 +2,16 @@ import * as types from './mutation-types'
 import getters from './getters'
 
 const state = {
-  headerStatus:true
+  asideWidth:200,
+  asidebarIsCollapse:false
 };
 
 const mutations = {
-  [types.SHOW_HEADER](state) {
-    state.headerStatus = true;
+  [types.CHANGE_ASIDEBAR](state){
+    state.asideWidth = state.asideWidth==200?50:200;
   },
-  [types.HIDE_HEADER](state) {
-    state.headerStatus = false;
+  [types.ASIDEBAR_IS_COLLAPSE](state){
+    state.asidebarIsCollapse = state.asidebarIsCollapse?false:true;
   }
 };
 

@@ -1,4 +1,4 @@
-// 显示头部
-export const SHOW_HEADER = 'SHOW_HEADER';
-// 隐藏头部
-export const HIDE_HEADER = 'HIDE_HEADER';
+//改变侧边栏状态
+export const CHANGE_ASIDEBAR = 'CHANGE_ASIDEBAR';
+//侧边栏收放
+export const ASIDEBAR_IS_COLLAPSE = 'ASIDEBAR_IS_COLLAPSE';

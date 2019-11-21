@@ -1,56 +1,84 @@
 <template>
-<div>
-<el-row>
-  <el-button>默认按钮</el-button>
-  <el-button type="primary">主要按钮</el-button>
-  <el-button type="success">成功按钮</el-button>
-  <el-button type="info">信息按钮</el-button>
-  <el-button type="warning">警告按钮</el-button>
-  <el-button type="danger">危险按钮</el-button>
-</el-row>
-<el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-    </el-table>
-</div>
-  </template>
+  <el-container>
+  <el-header height="60px">
+    <Header/>
+  </el-header>
+  <el-container>
+    <el-aside :width="asideWidth+'px'">
+      <Asidebar/>
+    </el-aside>
+    <el-container class="container-main" :style="'left:'+asideWidth+'px'">
+      <el-main>
+        <div class="wrapper">
+          <router-view/>
+        </div>
+      </el-main>
+      <el-footer height="30px">
+        <el-row>
+          <el-col :span="24">
+              <p style="text-align: center">create by <a href="#" class="text-dark" >Vike0906</a> © 2019</p>
+          </el-col>
+        </el-row>
+      </el-footer>
+    </el-container>
+  </el-container>
+</el-container>
+</template>
 
-  <script>
-    export default {
-      data() {
-        return {
-          tableData: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }]
-        }
-      }
+<script>
+import Header from "./basic/Header";
+import Asidebar from "./basic/Asidebar";
+import Main from "./Main";
+
+export default {
+  components: {
+    Header,Asidebar,Main
+  },
+  computed:{
+    asideWidth:function(){
+      return this.$store.getters.getAsideWidth;
     }
-  </script>
+  }
+};
+</script>
+
+<style>
+.el-header{
+  /* background-color: #ecf2fa; */
+  background-color: #fff;
+  padding: 0 5px;
+  box-shadow:0 0 5px #75797d;
+  z-index: 1050;
+}
+.container-main{
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  bottom: 0px;
+}
+.el-footer {
+  background-color: #f5f5f6;
+  color: #333;
+  text-align: center;
+}
+.el-aside {
+  position: absolute;
+  top: 60px;
+  bottom: 0px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  z-index: 1049;
+}
+.el-main {
+  background-color: #f5f5f6;
+  color: #333;
+  text-align: center;
+  padding: 15px 15px;
+}
+.wrapper{
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+}
+</style>
